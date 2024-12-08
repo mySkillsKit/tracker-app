@@ -69,11 +69,17 @@ ngrok config add-authtoken 2YYlAAQoSfHj0P4kpt
 - запустить ngrok
 
 ```shell
-ngrok http http://localhost:3000
+ngrok http http://localhost:5055
 ```
+![file 2024-12-08 в 22.00.49.png](file%202024-12-08%20%D0%B2%2022.00.49.png)
 
 - Теперь вы можете протестировать свое приложение!
 
 ```shell
-https://cbfb-62-4-43-37.ngrok-free.app
+https://7ef0-62-4-43-37.ngrok-free.app
 ```
+- добавить ссылку в app Traccar client
+
+![Screenshot 2024-12-08 at 23.54.47.jpeg](Screenshot%202024-12-08%20at%2023.54.47.jpeg)
+
+![file 2024-12-08 в 21.57.26.png](file%202024-12-08%20%D0%B2%2021.57.26.png)

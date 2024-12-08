@@ -1,0 +1,48 @@
+services:
+  traccar-db:
+    image: postgres:16-alpine
+    container_name: traccar-db
+    environment:
+      POSTGRES_DB: traccar
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - traccar-network
+    volumes:
+      - traccar-postgres:/var/lib/postgresql/data
+
+  traccar-backend:
+    image: myskillskit/traccar-backend:latest
+    container_name: traccar-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - traccar-db
+    networks:
+      - traccar-network
+
+  traccar-frontend:
+    image: myskillskit/traccar-frontend:latest
+    build:
+      context: ./traccar-web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    command: [ "npm", "start", "--", "--host", "0.0.0.0" ]
+    networks:
+      - traccar-network
+
+networks:
+  traccar-network:
+    external: true
+
+volumes:
+  traccar-postgres:
+    driver: local

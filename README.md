@@ -6,6 +6,11 @@
 
 - Запускаем терминал в папке `/tracker-app`:
 - В терминале выполнить команду:
+- создать сеть:
+ ```shell
+docker network create traccar-network
+```
+- запуск:
 ```shell
 docker compose up -d
 ```
